@@ -13,7 +13,7 @@ yikouyuanye
 
 select
 
-	一个自定义select外观插件，主要解决select外观美观问题，及ie下select层级太高无法被遮罩遮盖问题。
+	一个原生js封装的自定义select外观插件，主要解决select外观美观问题，及ie下select层级太高无法被遮罩遮盖问题。
 
 	特点：
 	1、页面布局无需特殊处理，仅根据需要编写样式即可；
