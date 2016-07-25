@@ -1,23 +1,28 @@
-https://github.com/Googoo01/project.git
+yikouyuanye   
 
+	一个pc端项目，主要展示一口原野产品
 
+	使用到jquery来编写页面所需效果
+	
+	页面主要效果：
 
-本地新建目录首次与远程目录关联：
+	1、首屏打开方式；首屏满屏展示；
+	2、首屏滚动隐藏时页面元素的飞出凸显立体效果；
+	3、第二页的鼠标滑过蒙版跟随鼠标进入和滑出方向显示和隐藏；
+	4、滚动到页面顶部。
 
-git init
+select
 
-git remote add origin https://github.com/Googoo01/project.git
+	一个自定义select外观插件，主要解决select外观美观问题，及ie下select层级太高无法被遮罩遮盖问题。
 
-git push -u origin master
+	特点：
+	1、页面布局无需特殊处理，仅根据需要编写样式即可；
+	2、调用方便，无需繁琐配置，只需简单传入对应元素name即可；
+	3、支持一个页面多个select，互不冲突；
+	4、支持键盘旋转；
+	5、支持多选；
+	6、支持元素自定义的onchange事件。
+	7、仍有不完善的地方。
 
-之后会提示输入用户名密码
-
-
-然后那些用  git add   和 git commit 操作过（曾被添加到本地仓库）得文件就会被提交到远程仓库
-
-
-
-git add 文件夹  可以直接将文件夹和其子文件同时提交
-
-
-git rm  文件名     删除文件   然后再使用 git commit 提交即可
+	
+	
