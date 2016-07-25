@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自定义select样式</title>
+<link type="text/css" rel="stylesheet" href="Css/Basis.css"/>
+<link type="text/css" rel="stylesheet" href="Css/Select.css"/>
+</head>
+<body style="padding:30px;">
+	<b>示例：</b>
+    <form action="#" method="get" class="FmSlc">
+        <label>小A负责项目:
+            <select onchange="ok1()" name="AAA" id="A" class="SlctBox">
+                <option value="1">云平台</option>
+                <option value="2">研发规范</option>
+                <option value="3" >个人中心sssssssss</option>
+                <option value="4">研发规范ddd研发规范ddd研发规范</option>
+                <option value="5">个人中心eeeeeeee</option>
+            </select>
+        </label><br/><br/>
+        <label>小B负责项目:
+            <select name="BBB" id="B" class="Sl2Box">
+                <option value="1">云平台</option>
+                <option value="2">研发规范</option>
+                <option value="3" >个人中心sssssssss</option>
+                <option value="4">研发规范ddd研发规范ddd研发规范</option>
+                <option value="5">个人中心eeeeeeee</option>
+            </select>
+        </label><br/><br/>
+        <label>进行中的项目:
+            <select name="multi" id="C" multiple class="Sl3Box">
+                <option value="1">云平台</option>
+                <option value="2">研发规范</option>
+                <option value="3" >个人中心sssssssss</option>
+                <option value="4">研发规范ddd研发</option>
+                <option value="5">个人中心eeee</option>
+            </select>
+        </label>
+    </form>
+    <br/>
+    <a style="color:#00C;" href="javascript:;" id="GetBtn">获取“小B负责项目”的value值</a><br/><br/>
+    
+    <div>
+    	<b>说明：</b>
+        <ol>
+            <li>单选获取焦点后使用 “enter” 键和 “escape” 键可打开、关闭选项菜单；</li>
+            <li>单选选项菜单打开后可使用“↑”、“↓”来选择当前项，并用“enter”键选定；</li>
+        	<li>多选框可用“ctrl+鼠标左键”和“shift+鼠标左键”来进行多选；</li>
+        	<li>兼容浏览器：ie6-9、opera、chrome、safari、firfox、遨游；</li>
+        	<li>注：id="GetBtn"的链接展示了如何获取select的value值；id="A"的select展示了如何添加change事件。</li>
+        </ol>
+    </div>
+    <br/>
+    <b>js使用说：</b>
+    <ol>
+    	<li>将自定义样式名加到select上;</li>
+    	<li>引入base.js及select.js;</li>
+        <li>直接调用Selects()方法，将自定义样式select的name作为参数传入；方法可接受多个参数;</li>
+    </ol>
+
+    <script type="text/javascript" src="Js/Base.js"></script>
+    <script type="text/ecmascript" src="Js/Select.js"></script>
+    <script type="text/javascript">
+		//调用组件
+		Selects('AAA','BBB','multi');		
+		
+		function ok1(){
+			alert('value change');
+		}
+		C.AddEvent(C.G('GetBtn'),'click',function(e){
+			alert(C.G('B').value);
+		})
+    </script>
+</body>
+</html>
