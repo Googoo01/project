@@ -18,3 +18,6 @@ git push -u origin master
 
 
 git add 文件夹  可以直接将文件夹和其子文件同时提交
+
+
+git rm  文件名     删除文件   然后再使用 git commit 提交即可
