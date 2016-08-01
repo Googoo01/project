@@ -1,13 +1,19 @@
 function setChart(option){
 	var day = 1;
 	var apiPage = 'chart.html';
+	var upCl = "#ff0000";
+	var downCl = "#06c871";
 	switch(option.lineType){
 		case 'hk5':
 			day = 5;
 			apiPage = 'hkchart.html';
+			upCl = "#06c871";
+			downCl = "#ff0000";
 			break;
 		case 'hk':
 			apiPage = 'hkchart.html';
+			upCl = "#06c871";
+			downCl = "#ff0000";
 			break;
 		case 'as5':
 			day = 5;
@@ -16,8 +22,8 @@ function setChart(option){
 	//分时图
 	var chart = {
 		CavId:option.id,
-		UpColor:"#ff0000",
-		DownColor:"#06c871",
+		UpColor:upCl,
+		DownColor:downCl,
 		LasColor:"#373737",
 		PricLineColor:"#39a6fe",
 		AvrLinColor:"#efc660",
@@ -54,9 +60,38 @@ function setChart(option){
 	var oldResult;
 	var oldResultLen;
 	var lstTime = 0;
+	$.ajax({
+		url: quotes_api + apiPage,
+		cache: false,
+		type: 'get',
+		dataType: 'jsonp',
+		jsonp: 'callback',
+		data: {
+			/* 固定服务号 */
+			action: 'getrline',
+			/* 操作类型 */
+			stockid: option.stock,
+			/* 用户ID */
+			days:day
+			/* 股票代码 */
+			//lasttime: 1428371700
+		},
+		success: function(result)
+		{
+			oldResult = result;
+			oldResultLen = result.list.length;
+			lstTime = oldResult.list[oldResultLen-1][0]
+			sChart1 = ConectTo(result,chart)
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown)
+		{
+			/* 请求异常根据自己需要处理 */
+		}
+	});
 
-	function getData(){
+	var timer = setInterval(function(){
 		$.ajax({
+			//url: quotes_api + 'chart.html',
 			url: quotes_api + apiPage,
 			cache: false,
 			type: 'get',
@@ -70,36 +105,24 @@ function setChart(option){
 				/* 用户ID */
 				days:day,
 				/* 股票代码 */
-				//lasttime: 1428371700
 				lasttime: lstTime
 			},
 			success: function(result)
-			{
-				if(first){
-					first = false;
-					oldResult = result;
-					oldResultLen = result.list.length;
-					lstTime = oldResult.list[oldResultLen-1][0]
-					sChart1 = ConectTo(result,chart)
-				}else{
-					if(result.list){
-						for(i in result.list){
-							oldResult.list[oldResultLen] = result.list[i]
-							oldResultLen++;
-							lstTime = result.list[i][0];
-						}
+			{				
+				if(result.list){
+					for(i in result.list){
+						oldResult.list[oldResultLen] = result.list[i]
+						oldResultLen++;
+						lstTime = result.list[i][0];
 					}
-					reDraw(oldResult,sChart1);
-				}			
+				}
+				reDraw(oldResult,sChart1);
+				//reDraw(result,sChart1)
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown)
 			{
 				/* 请求异常根据自己需要处理 */
 			}
-		});
-	}
-	var timer = setInterval(getData,30000);
-
-	var first = true;
-	getData();
+		});	
+	},30000)
 }
