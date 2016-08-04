@@ -1,0 +1,35 @@
+/* css Reset */
+html,body,form,div,span,p,h1,h2,h3,h4,h5,h6,a,b,i,em,strong,label,table,tbody,td,th,tr,dl,dt,dd,ul,li,ol,img,input,select,textarea,br,hr,button,map,pre {margin:0;padding:0;}
+ul,ol{list-style:none}
+button,input,select,textarea{font-size:100%;vertical-align:middle;outline:none;}
+textarea{resize:none}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight: normal;}
+a{ text-decoration:none; blr:expression(this.onFocus=this.blur());}
+a:focus {outline: none;}  
+em,i{text-decoration:none;font-style:normal;}
+img { vertical-align:middle;}
+table{border-collapse:collapse;border-spacing:0}
+.Fl { float:left; display:inline;}
+.Fr { float:right; display:inline;}
+.Cf:before,.Cf:after{content:"";display:table}.Cf:after{clear:both}.Cf{zoom:1}
+
+.Mt10{margin-top:10px}
+.Ml10{margin-left:10px}
+.P10{padding:10px}
+.Pt10{padding-top:10px}
+.Pr10{padding-right:10px}
+.Pb10{padding-bottom:10px}
+.Pl10{padding-left:10px}
+.Ld{
+	display:block;
+	background:url(http://hs.cnfol.com/Cm/Imgs/Load.gif) no-repeat center center;
+	position:relative;
+}
+.Break{word-break:break-all;word-wrap:break-word;}
+/* html5 */
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}
+button, input[type=button], input[type=password], input[type=submit], input[type=text], textarea{
+-webkit-appearance:none;
+}
+/* End Css Reset*/
+
